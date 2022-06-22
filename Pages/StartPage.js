@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Button, Keyboard } from 'react-native';
+import { app } from '../firebaseConfig';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 export default function StartPage({ navigation }) {
+
+  useEffect(() => {
+    const db = getDatabase(app);
+    const reference = ref(db, '/');
+    onValue(reference, (snapshot) => {
+      console.log(snapshot.val());
+    });
+
+  })
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
