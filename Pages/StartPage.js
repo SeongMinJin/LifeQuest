@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Button, Keyboard } from 'react-native';
-import { app } from '../firebaseConfig';
+import { firebase_db } from '../firebaseConfig';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
+import Constants from 'expo-constants';
 
-export default function StartPage({ navigation }) {
+export default function StartPage({ checkExist }) {
+  const user_idx = Constants.installationId;
+  const [inputValue, setInputValue] = useState('');
 
-  useEffect(() => {
-    const db = getDatabase(app);
-    const reference = ref(db, '/');
-    onValue(reference, (snapshot) => {
-      console.log(snapshot.val());
+  function createUser(userId, name) {
+    set(ref(firebase_db, 'users/' + userId), {
+      username: name,
+      balance: 0,
+      health: 0,
+      brain: 0,
+      lucky: 0,
+      relationship: 0
     });
-
-  })
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,9 +25,9 @@ export default function StartPage({ navigation }) {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.inner}>
             <Text style={styles.header}>안녕하세요. 저는</Text>
-            <TextInput placeholder="Username" style={styles.textInput} />
+            <TextInput placeholder="Username" style={styles.textInput} onChangeText={(text) => setInputValue(text)} value={inputValue}/>
             <View style={styles.btnContainer}>
-              <Button title="입니다." onPress={() => null} />
+              <Button title="입니다." onPress={function() {createUser(user_idx, inputValue); checkExist()}} />
             </View>
           </View>
         </TouchableWithoutFeedback>
