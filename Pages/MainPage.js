@@ -22,9 +22,6 @@ export default function MainPage({ navigation }) {
       <ScrollView>
         <Text>{userName}님 안녕하세요.</Text>
       </ScrollView>
-      <View style={styles.bottomMenuContainer}>
-        <TouchableOpacity style={styles.button1} onPress={() => { navigation.navigate('QuestListPage') }}></TouchableOpacity>
-      </View>
     </View>
   )
 }
@@ -33,17 +30,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'pink'
-  },
-  bottomMenuContainer: {
-    width: '100%',
-    height: '10%',
-    position: 'fixed',
-    backgroundColor: 'skyblue',
-    bottom: 0,
-  },
-  button1: {
-    width: '20%',
-    height: '80%',
-    backgroundColor: 'green'
   }
 })

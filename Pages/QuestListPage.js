@@ -6,9 +6,6 @@ export default function QuestListPage ({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>This is QuestListPage</Text>
-      <View style={styles.bottomMenuContainer}>
-        <TouchableOpacity style={styles.button1} onPress={() => { navigation.navigate('RankingPage') }}></TouchableOpacity>
-      </View>
     </View>
   )
 }

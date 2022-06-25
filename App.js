@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
 import StackNavigator from './navigation/StackNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator'
 import { NavigationContainer } from '@react-navigation/native';
 
 import { firebase_db } from './firebaseConfig';
 import { ref, onValue, get, child } from 'firebase/database';
+
 import Constants from 'expo-constants';
 
 import LoadingPage from './Pages/LoadingPage'
@@ -39,7 +42,8 @@ export default function App() {
     else {
       return (
         <NavigationContainer>
-          <StackNavigator />
+          {/* <StackNavigator /> */}
+          <BottomTabNavigator />
         </NavigationContainer>
       )
     }
