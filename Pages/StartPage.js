@@ -15,7 +15,8 @@ export default function StartPage({ checkExist }) {
       health: 0,
       brain: 0,
       lucky: 0,
-      relationship: 0
+      relationship: 0,
+      currentQuest: ''
     });
   }
 

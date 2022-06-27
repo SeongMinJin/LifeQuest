@@ -1,33 +1,35 @@
 import { Center } from 'native-base';
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Touchable } from 'react-native';
 
-export default function QuestListPage ({ navigation }) {
+import { firebase_db } from '../firebaseConfig';
+import { ref, onValue, get, child } from 'firebase/database';
+
+import QuestCard from '../components/QuestCard';
+
+export default function QuestListPage() {
+  const [quests, setQuests] = useState([]);
+
+  useEffect(() => {
+    get(child(ref(firebase_db), 'quests')).then((snapshot) => {
+      setQuests(snapshot.val());
+    })
+  })
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>This is QuestListPage</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      {
+        quests.map((content, i) => {
+          return (
+            <QuestCard content={content} key={i} />
+          )
+        })
+      }
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center'
-  },
-  text: {
-    textAlign: 'center'
-  },
-  bottomMenuContainer: {
-    width: '100%',
-    height: '10%',
-    position: 'fixed',
-    backgroundColor: 'skyblue',
-    bottom: 0,
-  },
-  button1: {
-    width: '20%',
-    height: '80%',
-    backgroundColor: 'green'
   }
 })

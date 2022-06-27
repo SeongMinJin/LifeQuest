@@ -29,8 +29,8 @@ export default function StackNavigator() {
         }}
       />
       <Tab.Screen
-        name="QuestListPage"
-        component={QuestListPage}
+        name="RankingPage"
+        component={RankingPage}
         options={{
           tabBarLabel: '랭킹',
           tabBarIcon: ({ color, size }) => (
@@ -39,8 +39,8 @@ export default function StackNavigator() {
         }}
       />
       <Tab.Screen
-        name="RankingPage"
-        component={RankingPage}
+        name="QuestListPage"
+        component={QuestListPage}
         options={{
           tabBarLabel: '퀘스트',
           tabBarIcon: ({ color, size }) => (

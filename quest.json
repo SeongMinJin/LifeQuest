@@ -1,0 +1,60 @@
+{
+  "quests": [
+    {
+      "category": "brain",
+      "title": "공부하기",
+      "time": 30,
+      "max": 8,
+      "wage": 12000
+    },
+    {
+      "category": "brain",
+      "title": "책 읽기",
+      "time": 15,
+      "max": 4,
+      "wage": 10000
+    },
+    {
+      "category": "health",
+      "title": "달리기",
+      "time": 10,
+      "max": 3,
+      "wage": 20000
+    },
+    {
+      "category": "health",
+      "title": "걷기",
+      "time": 20,
+      "max": 3,
+      "wage": 20000
+    },
+    {
+      "category": "health",
+      "title": "양치하기",
+      "time": 5,
+      "max": 3,
+      "wage": 10000
+    },
+    {
+      "category": "lucky",
+      "title": "쓰레기 줍기",
+      "time": 3,
+      "max": 10,
+      "wage": 3000
+    },
+    {
+      "category": "relationship",
+      "title": "부모님께 전화하기",
+      "time": 3,
+      "max": 2,
+      "wage": 30000
+    },
+    {
+      "category": "relationship",
+      "title": "친구한테 전화하기",
+      "time": 3,
+      "max": 1,
+      "wage": 10000
+    }
+  ]
+}
