@@ -1,5 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesome5, Octicons, MaterialCommunityIcons } from '@expo/vector-icons'
+
 
 import MainPage from '../Pages/MainPage'
 import QuestListPage from '../Pages/QuestListPage';
@@ -11,37 +13,50 @@ const Tab = createBottomTabNavigator();
 export default function StackNavigator() {
   return (
     <Tab.Navigator
-      // screenOptions={({ route }) => ({
-      //   tabBarIcon: ({ focused, color, size }) => {
-      //     let iconName;
-      //     if (route.name === 'Home') {
-      //       iconName = focused
-      //         ? require('./assets/images/home_ch.png')
-      //         : require('./assets/images/home_un.png');
-      //     } else if (route.name === 'Ranking') {
-      //       iconName = focused
-      //         ? require('./assets/images/ranking_ch.png')
-      //         : require('./assets/images/ranking_un.png');
-      //     } else if (route.name === 'Statisctics') {
-      //       iconName = focused
-      //         ? require('./assets/images/calendar_ch.png')
-      //         : require('./assets/images/calendar_un.png');
-      //     } else if (route.name === 'MyPage') {
-      //       iconName = focused
-      //         ? require('./assets/images/user_ch.png')
-      //         : require('./assets/images/user_un.png');
-      //     }
-
-      //     return (
-      //       <Image source={iconName} style={{ width: 25, height: 25 }} />
-      //     );
-      //   },
-      // })}
-      >
-      <Tab.Screen name="MainPage" component={MainPage} />
-      <Tab.Screen name="QuestListPage" component={QuestListPage} />
-      <Tab.Screen name="RankingPage" component={RankingPage} />
-      <Tab.Screen name="SettingPage" component={SettingPage} />
+      initialRouteName="MainPage"
+      screenOptions={{
+        tabBarActiveTintColor: '#e91e63',
+      }}
+    >
+      <Tab.Screen
+        name="MainPage"
+        component={MainPage}
+        options={{
+          tabBarLabel: '홈',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="QuestListPage"
+        component={QuestListPage}
+        options={{
+          tabBarLabel: '랭킹',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="podium-gold" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="RankingPage"
+        component={RankingPage}
+        options={{
+          tabBarLabel: '퀘스트',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="question" color={color} size={size} />
+          ),
+        }} />
+      <Tab.Screen
+        name="SettingPage"
+        component={SettingPage}
+        options={{
+          tabBarLabel: '설정',
+          tabBarIcon: ({ color, size }) => (
+            <Octicons name="gear" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   )
 }
